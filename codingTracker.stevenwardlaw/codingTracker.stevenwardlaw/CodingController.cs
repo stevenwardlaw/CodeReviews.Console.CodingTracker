@@ -83,7 +83,7 @@ namespace codingTracker.stevenwardlaw
             using (var connection = new SqliteConnection(CreateConnectionString()))
             {
                 connection.Open();
-                string sql = "SELECT * from codingTracker";
+                string sql = UserInput.ViewRecordOptions();
                 List<CodingSession> sessions = connection.Query<CodingSession>(sql).ToList();
 
                 var table = new Table();
@@ -101,8 +101,8 @@ namespace codingTracker.stevenwardlaw
 
         private static int GetDuration(string _startTime, string _endTime)
         {
-            DateTime startTime = DateTime.ParseExact(_startTime, "dd-MM-yyyy HH:mm", null);
-            DateTime endTime = DateTime.ParseExact(_endTime, "dd-MM-yyyy HH:mm", null);
+            DateTime startTime = DateTime.ParseExact(_startTime, "yyyy-MM-dd HH:mm", null);
+            DateTime endTime = DateTime.ParseExact(_endTime, "yyyy-MM-dd HH:mm", null);
             TimeSpan duration = endTime - startTime;
             int durationMinutes = (int)duration.TotalMinutes;
             return durationMinutes;

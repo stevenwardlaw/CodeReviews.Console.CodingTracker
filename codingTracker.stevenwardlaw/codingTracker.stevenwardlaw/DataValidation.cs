@@ -4,7 +4,7 @@
     {
         public static bool ValidateDate(string date)
         {
-            return DateTime.TryParseExact(date, "dd-MM-yyyy HH:mm", null, 0, out DateTime result);
+            return DateTime.TryParseExact(date, "yyyy-MM-dd HH:mm", null, 0, out DateTime result);
         }
 
         public static bool ValidateNumber(string num)
@@ -14,8 +14,8 @@
 
         public static bool IsEndDateAfter(string _startTime, string _endTime)
         {
-            DateTime startTime = DateTime.ParseExact(_startTime, "dd-MM-yyyy HH:mm", null);
-            DateTime endTime = DateTime.ParseExact(_endTime, "dd-MM-yyyy HH:mm", null);
+            DateTime startTime = DateTime.ParseExact(_startTime, "yyyy-MM-dd HH:mm", null);
+            DateTime endTime = DateTime.ParseExact(_endTime, "yyyy-MM-dd HH:mm", null);
             if (endTime > startTime) return true;
             else return false;
         }
